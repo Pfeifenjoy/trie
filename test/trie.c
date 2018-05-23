@@ -1,4 +1,4 @@
-#include "trie.h"
+#include "trie/trie.h"
 #include "stdlib.h"
 #include "assert.h"
 
