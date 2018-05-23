@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Pfeifenjoy/trie.svg?branch=master)](https://travis-ci.org/Pfeifenjoy/trie)
+
 # Trie
 
 A small library which implements tries in C.
