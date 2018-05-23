@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(trie VERSION 0.0.1 LANGUAGES C)
+project(trie VERSION 1.0.0 LANGUAGES C)
 
 add_library(trie src/trie.c)
 target_include_directories(trie PUBLIC
