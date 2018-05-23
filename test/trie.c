@@ -53,10 +53,33 @@ void max_children() {
 	trie_free(trie);
 }
 
+void delete_element() {
+	struct trie *trie = make_trie();
+	trie_set(trie, "truth", 42);
+	assert(trie_search(trie, "truth") == 42);
+	trie_delete(trie, "truth");
+	assert(trie_search(trie, "truth") == -1);
+	trie_free(trie);
+}
+
+void delete_element_that_has_subelement() {
+	struct trie *trie = make_trie();
+	trie_set(trie, "a", 42);
+	trie_set(trie, "ab", 24);
+	assert(trie_search(trie, "a") == 42);
+	assert(trie_search(trie, "ab") == 24);
+	trie_delete(trie, "a");
+	assert(trie_search(trie, "a") == -1);
+	assert(trie_search(trie, "ab") == 24);
+	trie_free(trie);
+}
+
 int main(int argc, char *argv[]) {
 	simple_insertion();
 	empty_key();
 	two_keys();
 	two_keys_with_same_beginning();
+	delete_element();
+	delete_element_that_has_subelement();
 	return 0;
 }

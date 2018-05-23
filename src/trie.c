@@ -10,7 +10,7 @@ void trie_init(struct trie *trie) {
 }
 
 struct trie *make_trie() {
-	struct trie *trie = (struct trie *) malloc(sizeof(trie));
+	struct trie *trie = (struct trie *) malloc(sizeof(struct trie));
 	trie_init(trie);
 	return trie;
 }
@@ -79,9 +79,39 @@ trie_value trie_search(const struct trie *trie, const char *key) {
 }
 
 void trie_delete(struct trie *trie, const char *key) {
-	//TODO
-}
+	if(*key == 0) {
+		trie->is_end = false;
+		trie->value = 0;
+		return;
+	}
 
-void trie_refresh(struct trie *trie) {
-	//TODO
+	//find correct child
+	unsigned char i;
+	for(i = 0; i < trie->children_count; ++i) {
+		if(trie->children[i].symbol == *key) {
+			break;
+		}
+	}
+
+	trie_delete(trie->children + i, key + 1);
+
+	//check if child exists
+	if(trie->children[i].children_count != 0) {
+		return;
+	}
+
+	//decrement children count
+	trie->children_count -= 1;
+
+	//shift rest of array
+	for(; i < trie->children_count; ++i) {
+		trie->children[i] = trie->children[i + 1];
+	}
+
+	//free unnecessary memory
+	if(2 * trie->children_count <= trie->children_size) {
+		trie->children_size /= 2;
+		trie->children = (struct trie *) realloc(trie->children,
+				trie->children_size * sizeof(struct trie));
+	}
 }
