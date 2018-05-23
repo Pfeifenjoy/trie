@@ -38,13 +38,15 @@ void two_keys_with_same_beginning() {
 
 void max_children() {
 	struct trie *trie = make_trie();
-	for(unsigned char i = 0; i < 8 * sizeof(unsigned char); ++i) {
+
+	unsigned char i;
+	for(i = 0; i < 8 * sizeof(unsigned char); ++i) {
 		char key[2];
 		key[0] = (char) i;
 		key[1] = 0;
 		trie_set(trie, key, (ssize_t) i);
 	}
-	for(unsigned char i = 0; i < 8 * sizeof(unsigned char); ++i) {
+	for(i = 0; i < 8 * sizeof(unsigned char); ++i) {
 		char key[2];
 		key[0] = (char) i;
 		key[1] = 0;

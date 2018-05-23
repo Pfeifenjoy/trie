@@ -16,7 +16,8 @@ struct trie *make_trie() {
 }
 
 void trie_children_free(struct trie *trie) {
-	for(size_t i = 0; i < trie->children_count; ++i) {
+	size_t i;
+	for(i = 0; i < trie->children_count; ++i) {
 		trie_children_free(trie->children + i);
 	}
 	free(trie->children);
@@ -38,7 +39,8 @@ void trie_set(struct trie *trie, const char *key, trie_value value) {
 	}
 
 	//check if child with symbol exists
-	for(unsigned char i = 0; i < trie->children_count; ++i) {
+	unsigned char i;
+	for(i = 0; i < trie->children_count; ++i) {
 		if(trie->children[i].symbol == *key) {
 			trie_set(trie->children + i, key + 1, value);
 			return;
@@ -69,7 +71,8 @@ trie_value trie_search(const struct trie *trie, const char *key) {
 	}
 
 	//check children
-	for(unsigned char i = 0; i < trie->children_count; ++i) {
+	unsigned char i;
+	for(i = 0; i < trie->children_count; ++i) {
 		if(trie->children[i].symbol == *key) {
 			return trie_search(trie->children + i, key + 1);
 		}
