@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Pfeifenjoy/trie.svg?branch=master)](https://travis-ci.org/Pfeifenjoy/trie)
 
-# Trie
+# Trie.h
 
 A small library which implements tries in C.
 The idea is that the trie only holds `ssize_t` values.
