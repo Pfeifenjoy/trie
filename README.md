@@ -8,7 +8,7 @@ Thus it can be used as an index for an array.
 
 E.g:
 ```
-#include "trie.h"
+#include "trie/trie.h"
 
 int main(const int argc, const char **argv) {
 	char **array; // my array of string e.g.: { "bar", ... }
