@@ -23,6 +23,6 @@ struct trie *make_trie();
 void trie_free(struct trie *);
 void trie_set(struct trie *, const char *, trie_value);
 trie_value trie_search(const struct trie *, const char *);
-void trie_delete(struct trie *trie, const char *key);
+void trie_delete(struct trie *, const char *);
 
 #endif /* end of include guard: TRIE_H_QCLIV8BD */

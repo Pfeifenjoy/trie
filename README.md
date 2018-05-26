@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Pfeifenjoy/trie.svg?branch=master)](https://travis-ci.org/Pfeifenjoy/trie)
+[![Build Status](https://travis-ci.org/Pfeifenjoy/trie.h.svg?branch=master)](https://travis-ci.org/Pfeifenjoy/trie.h)
 
 # Trie.h
 
