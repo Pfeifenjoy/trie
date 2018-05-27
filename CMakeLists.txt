@@ -1,37 +1,39 @@
 cmake_minimum_required(VERSION 3.5)
-project(trie VERSION 1.0.0 LANGUAGES C)
+project(Trie VERSION 1.0.0 LANGUAGES C)
 
-add_library(trie src/trie.c)
-target_include_directories(trie PUBLIC
+add_library(Trie src/trie.c)
+target_include_directories(Trie PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 	$<INSTALL_INTERFACE:include>
 )
 
 enable_testing()
 add_executable(trie-test test/trie.c)
-target_link_libraries(trie-test trie)
+target_link_libraries(trie-test Trie)
 add_test(NAME trie COMMAND trie-test)
 
-install(TARGETS trie EXPORT TrieTargets
+install(TARGETS Trie EXPORT TrieTargets
 	ARCHIVE DESTINATION lib
 	LIBRARY DESTINATION lib
 	RUNTIME DESTINATION bin
 	INCLUDES DESTINATION include
 )
-install(DIRECTORY include/trie DESTINATION include)
 install(EXPORT TrieTargets
 	FILE TrieTargets.cmake
 	NAMESPACE Trie::
-	DESTINATION lib/cmake/trie
+	DESTINATION lib/cmake/Trie
 )
 
 include(CMakePackageConfigHelpers)
-write_basic_package_version_file(TrieConfigVersion.cmake
+write_basic_package_version_file("TrieConfigVersion.cmake"
+	VERSION ${Trie_VERSION}
 	COMPATIBILITY SameMajorVersion
 )
 
-install(FILES build/TrieConfigVersion.cmake
-	DESTINATION lib/cmake/trie
+install(FILES
+	"TrieConfig.cmake"
+	"${CMAKE_CURRENT_BINARY_DIR}/TrieConfigVersion.cmake"
+	DESTINATION lib/cmake/Trie
 )
 
 #CPack
