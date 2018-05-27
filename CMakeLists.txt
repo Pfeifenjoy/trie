@@ -18,6 +18,8 @@ install(TARGETS Trie EXPORT TrieTargets
 	RUNTIME DESTINATION bin
 	INCLUDES DESTINATION include
 )
+install(DIRECTORY include/trie DESTINATION include)
+
 install(EXPORT TrieTargets
 	FILE TrieTargets.cmake
 	NAMESPACE Trie::
